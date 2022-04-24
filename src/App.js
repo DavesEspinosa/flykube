@@ -19,10 +19,10 @@ function App() {
     <>
     <div className="App">
         <div className='form_container'>
-          <button className="custom-btn btn-1" onClick={() => switchDisabled(false)}>
+          <button className="btn-active" onClick={() => switchDisabled(false)}>
             Active
           </button>
-          <button className="custom-btn btn-16" onClick={() => switchDisabled(true)} >
+          <button className="btn-inactive" onClick={() => switchDisabled(true)} >
             Inactive
           </button>
         </div>
@@ -45,7 +45,7 @@ function App() {
                   />
                 </label>
               </div>
-                <button className={`custom-btn ${!isActive ? "btn-1" : "btn-16"} `} id='send' type='submit' disabled={isActive ? 1 : 0} >ENVIAR</button>
+                <button className={!isActive ? "btn-active" : "btn-inactive"} id='send' type='submit' disabled={isActive ? 1 : 0} >ENVIAR</button>
             </form>        
           </div>
       </div>

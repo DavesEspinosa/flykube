@@ -6,7 +6,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 35vmin;
   pointer-events: none;
 }
 
@@ -32,17 +32,18 @@
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
+@media screen and (min-width: 768px) {
+  .App-header{
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+  }  
+}
+
 button {
   margin: 20px;
   cursor: pointer;
-}
-
-#send:disabled {
-  cursor: not-allowed;
-  color:darkgray
-}
-
-.custom-btn {
   width: 130px;
   height: 40px;
   color: #fff;
@@ -60,23 +61,26 @@ button {
   outline: none;
 }
 
-/* 1 */
-.btn-1 {
+#send:disabled {
+  cursor: not-allowed;
+  color:darkgray
+}
+
+.btn-active {
   background: rgb(6,14,131);
   background: linear-gradient(0deg, rgba(6,14,131,1) 0%, rgba(12,25,180,1) 100%);
   border: none;
 }
-.btn-1:hover {
+.btn-active:hover {
    background: rgb(0,3,255);
-background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+  background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
 }
 
-/* 16 */
-.btn-16 {
+.btn-inactive {
   border: none;
   color: #000;
 }
-.btn-16:after {
+.btn-inactive:after {
   position: absolute;
   content: "";
   width: 0;
@@ -92,25 +96,16 @@ background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
    4px 4px 5px 0px #0001;
   transition: all 0.3s ease;
 }
-.btn-16:hover {
+.btn-inactive:hover {
   color: #000;
 }
-.btn-16:hover:after {
+.btn-inactive:hover:after {
   left: auto;
   right: 0;
   width: 100%;
 }
-.btn-16:active {
+.btn-inactive:active {
   top: 2px;
-}
-
-@media screen and (min-width: 768px) {
-  .App-header{
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-  }  
 }
 
 #firstName{
