@@ -1,5 +1,6 @@
+import React, {useContext} from 'react'
+import { GlobalContext } from '../context/Store';
 import './UsersList.css'
-import React from 'react'
 
 const UsersList = () => {
     const { users } = useContext(GlobalContext);
@@ -7,19 +8,19 @@ const UsersList = () => {
     return (
       <div className="container">
         {users && users?.map((user) => {
-            const {picture, country, age, name} = user
+            const {picture, country, age, name, id} = user
             return (
-                <div className="card">
-                <div className="avatar">
-                    <img className="image" src= {picture?.thumbnail} />
-                </div>
-                <div className="content-container">
-                    <p className="title">{name}</p>
-                    <p className="content">{country}</p>
-                    <p className="content">
-                    {`${age} years`}
-                    </p>
-                </div>
+                <div key={id} className="card">
+                    <div className="avatar">
+                        <img className="image" alt={name} src= {picture?.large} />
+                    </div>
+                    <div className="content-container">
+                        <p className="title">{name}</p>
+                        <p className="content">{country}</p>
+                        <p className="content">
+                        {`${age} years`}
+                        </p>
+                    </div>
                 </div>
             )
           })

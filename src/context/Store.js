@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from 'react';
-
+import uniqueId from 'lodash/uniqueId';
 import { Reducer } from './Reducer';
 
 export const GlobalContext = createContext();
@@ -19,10 +19,11 @@ export const GlobalProvider = ({ children }) => {
   }
 
   const showUser = (results, name) =>{
+    const randomId = uniqueId("prefix-");
     results.forEach(obj => {
       dispatch({
         type: "GET_USER",
-        payload: { user: obj, name }      
+        payload: { user: {...obj, randomId}, name }      
     });
     });
   }

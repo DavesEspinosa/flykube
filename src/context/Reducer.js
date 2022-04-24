@@ -2,11 +2,12 @@ export const Reducer = (state, action) => {
     switch (action.type) {
       case "GET_USER":
         const { user, name } = action.payload
-        const { dob, location, picture } = user
+        const { dob, location, picture, id, randomId } = user
         if (!state.users.length){
           return {
             ...state,
             users: [{
+              id: id.value ? id.value : randomId,
               country: location.country,
               age: dob.age,
               name: name,
@@ -17,6 +18,7 @@ export const Reducer = (state, action) => {
         return {
           ...state,
           users: [{
+            id: id.value ? id.value : randomId,
             country: location.country,
             age: dob.age,
             name: name,
@@ -26,7 +28,6 @@ export const Reducer = (state, action) => {
     
       case "STATE_BUTTON": {
         const { bool } = action.payload;
-        console.log('bool', bool)
         return {
             ...state,
             isActive: bool,

@@ -4,6 +4,7 @@ import { Form, Input, Divider, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import logo from './logo.svg';
 import './App.css';
+import UsersList from './components/UsersList';
 
 function App() {
   const { getRandomUser, switchDisabled, isActive } = useContext(GlobalContext);
@@ -27,32 +28,37 @@ function App() {
           </Button>
         </div>
       <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Form
-          form={form}
-          size="large"
-          onFinish={onFinish}
-          autoComplete="off"
-        >
-        <Form.Item
-          name="name"
-          rules={[
-            {
-              required: true,
-              message: 'Please input a name!',
-            },
-          ]}
-        >
-          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Name" />
-        </Form.Item>
+        <div>
+          <img src={logo} className="App-logo" alt="logo" />
+        </div>
+        <div>
+          <Form
+            form={form}
+            size="large"
+            onFinish={onFinish}
+            autoComplete="off"
+          >
+          <Form.Item
+            name="name"
+            rules={[
+              {
+                required: true,
+                message: 'Please input a name!',
+              },
+            ]}
+          >
+            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Name" />
+          </Form.Item>
 
-        <Form.Item>
-        <Button type="primary" shape='round' htmlType="submit" disabled={isActive} >
-          ENVIAR
-        </Button>
-      </Form.Item>
-        </Form>
+          <Form.Item>
+          <Button type="primary" shape='round' htmlType="submit" disabled={isActive} >
+            ENVIAR
+          </Button>
+        </Form.Item>
+          </Form>
+        </div>
       </div>
+      <UsersList />
     </div>
     </>
     )
