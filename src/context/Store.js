@@ -7,6 +7,7 @@ export const GlobalContext = createContext();
 export const GlobalProvider = ({ children }) => {
   const initialState = {
     users: [],
+    isActive: false
   };
   
   const [state, dispatch] = useReducer(Reducer, initialState);
@@ -26,11 +27,20 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  const switchDisabled = (bool) => {
+    dispatch({
+      type: "STATE_BUTTON",
+      payload: { bool }
+    })
+  }
+
   return (
     <GlobalContext.Provider
       value={{
         users: state.users,
-        getRandomUser, 
+        isActive: state.isActive,
+        getRandomUser,
+        switchDisabled       
       }}
     >
       {children}

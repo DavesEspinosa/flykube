@@ -6,7 +6,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const { getRandomUser } = useContext(GlobalContext);
+  const { getRandomUser, switchDisabled, isActive } = useContext(GlobalContext);
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
@@ -18,11 +18,11 @@ function App() {
     <>
     <div className="App">
         <div className='test'>
-          <Button type="primary" shape="round" size="large" >
+          <Button type="primary" shape="round" size="large" onClick={() => switchDisabled(false)}>
             Active
           </Button>
           <Divider style={{height:"2.9rem", margin:"0 2rem"}} type="vertical" />
-          <Button type="secondary" shape="round" size="large" >
+          <Button type="secondary" shape="round" size="large" onClick={() => switchDisabled(true)} >
             Inactive
           </Button>
         </div>
@@ -47,7 +47,7 @@ function App() {
         </Form.Item>
 
         <Form.Item>
-        <Button type="primary" shape='round' htmlType="submit" >
+        <Button type="primary" shape='round' htmlType="submit" disabled={isActive} >
           ENVIAR
         </Button>
       </Form.Item>

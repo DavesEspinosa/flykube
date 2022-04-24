@@ -23,7 +23,16 @@ export const Reducer = (state, action) => {
             picture: {...picture},
           }, ...state.users]
         }
-        
+    
+      case "STATE_BUTTON": {
+        const { bool } = action.payload;
+        console.log('bool', bool)
+        return {
+            ...state,
+            isActive: bool,
+        };
+     }
+
       default:
         return state;
     }
