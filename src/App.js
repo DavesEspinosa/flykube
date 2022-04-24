@@ -17,7 +17,7 @@ function App() {
   return (
     <>
     <div className="App">
-        <div className='test'>
+        <div className='form_container'>
           <Button type="primary" shape="round" size="large" onClick={() => switchDisabled(false)}>
             Active
           </Button>
