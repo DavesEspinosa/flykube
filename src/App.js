@@ -35,6 +35,8 @@ function App() {
               <div className='form-control'>
                 <label htmlFor='name'>
                   <input
+                      autoComplete="off"
+                      required="required"
                       type='text'
                       id='name'
                       placeholder='Name'
