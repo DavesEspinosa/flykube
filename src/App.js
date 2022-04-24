@@ -1,62 +1,51 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from './context/Store'
-import { Form, Input, Divider, Button } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
 import logo from './logo.svg';
 import './App.css';
 import UsersList from './components/UsersList';
 
 function App() {
-  const { getRandomUser, switchDisabled, isActive } = useContext(GlobalContext);
-  const [form] = Form.useForm();
+  const { getRandomUser, switchDisabled, isActive, setInputName, inputName } = useContext(GlobalContext);
 
-  const onFinish = (values) => {
-    getRandomUser(values.name)
-    form.resetFields()
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (inputName) {
+      getRandomUser(inputName);
+      setInputName('')   
+    }
+  }
 
   return (
     <>
     <div className="App">
         <div className='form_container'>
-          <Button type="primary" shape="round" size="large" onClick={() => switchDisabled(false)}>
+          <button className="custom-btn btn-1" onClick={() => switchDisabled(false)}>
             Active
-          </Button>
-          <Divider style={{height:"2.9rem", margin:"0 2rem"}} type="vertical" />
-          <Button type="secondary" shape="round" size="large" onClick={() => switchDisabled(true)} >
+          </button>
+          <button className="custom-btn btn-16" onClick={() => switchDisabled(true)} >
             Inactive
-          </Button>
+          </button>
         </div>
       <div className="App-header">
         <div>
           <img src={logo} className="App-logo" alt="logo" />
         </div>
         <div>
-          <Form
-            form={form}
-            size="large"
-            onFinish={onFinish}
-            autoComplete="off"
-          >
-          <Form.Item
-            name="name"
-            rules={[
-              {
-                required: true,
-                message: 'Please input a name!',
-              },
-            ]}
-          >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Name" />
-          </Form.Item>
-
-          <Form.Item>
-          <Button type="primary" shape='round' htmlType="submit" disabled={isActive} >
-            ENVIAR
-          </Button>
-        </Form.Item>
-          </Form>
-        </div>
+            <form className='form' onSubmit={handleSubmit}>
+              <div className='form-control'>
+                <label htmlFor='name'>
+                  <input
+                      type='text'
+                      id='name'
+                      placeholder='Name'
+                      value={inputName}
+                      onChange={(e) => setInputName(e.target.value)}
+                  />
+                </label>
+              </div>
+                <button className={`custom-btn ${!isActive ? "btn-1" : "btn-16"} `} id='send' type='submit' disabled={isActive ? 1 : 0} >ENVIAR</button>
+            </form>        
+          </div>
       </div>
       <UsersList />
     </div>

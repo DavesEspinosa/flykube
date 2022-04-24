@@ -4,7 +4,7 @@ import './UsersList.css'
 
 const UsersList = () => {
     const { users } = useContext(GlobalContext);
-
+    
     return (
       <div className="container">
         {users && users?.map((user) => {

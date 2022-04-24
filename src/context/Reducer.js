@@ -25,6 +25,13 @@ export const Reducer = (state, action) => {
             picture: {...picture},
           }, ...state.users]
         }
+      case "STATE_INPUT": {
+        const { value } = action.payload;
+        return {
+            ...state,
+            inputName: value,
+        };
+      }
     
       case "STATE_BUTTON": {
         const { bool } = action.payload;
